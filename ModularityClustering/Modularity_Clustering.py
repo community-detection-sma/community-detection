@@ -5,7 +5,7 @@
 
 
 import networkx as nx
-from BetwenessCluster import Betweness_Clustering as q1
+from BetwenessClustering import Betweness_Clustering as q1
 zero=0
 one=1
 fone=1.0
