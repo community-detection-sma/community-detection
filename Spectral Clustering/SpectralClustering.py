@@ -4,10 +4,12 @@ import matplotlib.pyplot as plt
 import igraph
 import networkx as nx
 import numpy as np
+import timeit
+
 
 print("Karate Network")
 karate = igraph.read("karate.gml")
-
+kstart = timeit.default_timer()
 #convert igraph to networkx format
 k_edges = karate.get_edgelist()
 K = nx.Graph(k_edges)
@@ -61,12 +63,13 @@ print(L1)
 print("Cluster2 Nodes:")
 print(L2)
 
+kstop = timeit.default_timer()
 print("----------------------------------------------------------------------------------------")
 
 
 print("Dolphins Social Network")
 dolphins = igraph.read("dolphins.gml")
-
+dstart = timeit.default_timer()
 #convert igraph to networkx format
 d_edges = dolphins.get_edgelist()
 D = nx.Graph(d_edges)
@@ -119,12 +122,12 @@ print("Cluster1 Nodes:")
 print(L1)
 print("Cluster2 Nodes:")
 print(L2)
-
+dstop = timeit.default_timer()
 print("----------------------------------------------------------------------------------------")
 
 print("Jazz Musicians Network")
 jazz = igraph.read("jazz.net")
-
+jstart = timeit.default_timer()
 #convert igraph to networkx format
 j_edges = jazz.get_edgelist()
 J = nx.Graph(j_edges)
@@ -177,3 +180,10 @@ print("Cluster1 Nodes:")
 print(L1)
 print("Cluster2 Nodes:")
 print(L2)
+
+jstop = timeit.default_timer()
+
+print("__________________________________________________________________________________")
+print("Runtime for Karate", 1000*(kstop-kstart), "ms")
+print("Runtime for Jazz", 1000*(jstop-jstart), "ms")
+print("Runtime for Dolphins", 1000*(dstop-dstart), "ms")
